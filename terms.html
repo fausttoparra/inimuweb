@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms — inimu</title>
+  <meta name="description" content="inimu is a precision client for competitive games. Aim, visuals and utilities in one quiet menu." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    document.documentElement.classList.add('js');
+    try { const t = localStorage.getItem('inimu-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+    try { if (sessionStorage.getItem('inimu-session') || localStorage.getItem('inimu-session')) document.documentElement.classList.add('signed-in'); } catch (e) {}
+  </script>
+</head>
+<body>
+
+<!-- Logo sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="23" style="fill:var(--mark-bg,#6346CC)" />
+    <rect x="41.8" y="23.5" width="16.4" height="13.6" rx="6" style="fill:var(--mark-fg,#fff)" />
+    <rect x="42.7" y="40.6" width="14.6" height="35.9" style="fill:var(--mark-fg,#fff)" />
+  </symbol>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="lockup" href="index.html" aria-label="inimu — home">
+      <svg class="lockup-mark"><use href="#mark" /></svg>
+      <span class="wordmark">inimu</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html#products">Products</a>
+      <a href="status.html">Status</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="#" class="discord">Discord</a>
+    </nav>
+    <div class="nav-r">
+      <a class="nav-login hide-sm" href="login.html">Log in</a>
+      <a class="nav-register hide-sm" href="register.html">Register</a>
+      <div class="theme" role="radiogroup" aria-label="Theme">
+        <button data-theme-set="light" aria-label="Light theme" aria-pressed="false">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="3.5" /><path d="M10 1.8v2M10 16.2v2M1.8 10h2M16.2 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4" /></svg>
+        </button>
+        <button data-theme-set="dark" aria-label="Dark theme" aria-pressed="true">
+          <svg viewBox="0 0 20 20"><path d="M16.5 12.3A7 7 0 0 1 7.7 3.5a7 7 0 1 0 8.8 8.8z" /></svg>
+        </button>
+      </div>
+      <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-sheet" id="sheet">
+    <a href="index.html#products">Products</a>
+    <a href="status.html">Status</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="#">Discord</a>
+    <div class="sheet-ctas">
+      <a class="btn btn-ghost" href="login.html">Log in</a>
+      <a class="btn btn-primary" href="register.html">Register</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="sec sec-page">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Legal</span>
+      <h1 class="sec-title">Terms of service</h1>
+      <p class="sec-sub">The rules for using inimu. Short where possible, clear where it matters.</p>
+      <p class="legal-date">Last updated · 20 October 2026</p>
+    </div>
+    <div class="legal reveal">
+      <nav class="legal-toc" aria-label="On this page"><ol><li><a href="#overview"><span>01</span>Overview</a></li><li><a href="#eligibility"><span>02</span>Who can use inimu</a></li><li><a href="#account"><span>03</span>Your account</a></li><li><a href="#payments"><span>04</span>Payments and refunds</a></li><li><a href="#use"><span>05</span>Acceptable use</a></li><li><a href="#warranty"><span>06</span>No warranty</a></li><li><a href="#liability"><span>07</span>Limitation of liability</a></li><li><a href="#termination"><span>08</span>Termination</a></li><li><a href="#changes"><span>09</span>Changes</a></li><li><a href="#contact"><span>10</span>Contact</a></li></ol></nav>
+      <article class="legal-body">
+        <section class="legal-sec" id="overview"><h2><span>01</span>Overview</h2><p>These terms cover your use of inimu (the "Service"). Creating an account or making a purchase means you have read and accepted them. If you don't agree, please don't use the Service.</p></section>
+        <section class="legal-sec" id="eligibility"><h2><span>02</span>Who can use inimu</h2><p>You must be 18 or older, or the age of majority where you live if that is higher, to create an account or buy access. Registering confirms that you meet this requirement.</p></section>
+        <section class="legal-sec" id="account"><h2><span>03</span>Your account</h2><p>One person, one account. Sharing an account or a key, or running several accounts to get around limited tiers, leads to permanent termination with no refund. The UID on a paid account stays yours for as long as that account exists; if the account is closed, the UID can be given to someone else.</p></section>
+        <section class="legal-sec" id="payments"><h2><span>04</span>Payments and refunds</h2><p>Access is digital and delivered instantly, so every sale is final. We don't refund for a change of mind, for a ban that follows a breach of these terms, or for game updates that pause a product for a while. Refunds are only considered when we demonstrably failed to deliver what you bought.</p>
+<p>Card payments are handled by our payment provider. Crypto payments are arranged through a private Discord ticket and confirmed on-chain. Opening a chargeback without contacting support first ends your account permanently, and we may contest it.</p></section>
+        <section class="legal-sec" id="use"><h2><span>05</span>Acceptable use</h2><p>You agree not to:</p>
+<ul>
+<li>resell, sublicense or redistribute your access;</li>
+<li>reverse-engineer or decompile the software, or try to extract its source;</li>
+<li>share builds with anyone outside your own machine;</li>
+<li>harass other members of the community;</li>
+<li>use the Service to break any law that applies to you.</li>
+</ul></section>
+        <section class="legal-sec" id="warranty"><h2><span>06</span>No warranty</h2><p>The Service is provided "as is" and "as available", with no warranty of any kind, express or implied. We can't promise uninterrupted availability, fitness for a specific purpose, or compatibility with third-party platforms whose rules we don't control.</p></section>
+        <section class="legal-sec" id="liability"><h2><span>07</span>Limitation of liability</h2><p>As far as the law allows, our total liability for any claim connected to the Service is capped at what you paid us in the 30 days before the event behind the claim. We are not liable for indirect, incidental, special, consequential or punitive damages.</p></section>
+        <section class="legal-sec" id="termination"><h2><span>08</span>Termination</h2><p>We may suspend or close an account at any time, with or without notice, if these terms are broken. You can close your own account whenever you like by contacting support on Discord. Closing an account does not entitle you to a refund for remaining time.</p></section>
+        <section class="legal-sec" id="changes"><h2><span>09</span>Changes</h2><p>We may update these terms from time to time. The date at the top always shows the latest revision, and using the Service after a change means you accept it.</p></section>
+        <section class="legal-sec" id="contact"><h2><span>10</span>Contact</h2><p>Support, billing and disputes are all handled on our Discord server. Open a ticket and someone from the team will get back to you.</p></section>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="lockup" href="index.html" aria-label="inimu — home">
+        <svg class="lockup-mark"><use href="#mark" /></svg>
+        <span class="wordmark">inimu</span>
+      </a>
+      <p class="dim">Precision software for competitive games.</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h4>Product</h4>
+        <a href="index.html#products">Products</a><a href="status.html">Status</a><a href="#">Changelog</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#">Discord</a><a href="index.html#faq">FAQ</a><a href="#">Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="terms.html#payments">Refunds</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span class="mono-xs">© 2026 inimu</span>
+      <span class="mono-xs">Not affiliated with any game publisher.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="js/account.js"></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>inimu — Your edge, unseen</title>
+  <meta name="description" content="inimu is a precision client for competitive games. Aim, visuals and utilities in one quiet menu." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    document.documentElement.classList.add('js');
+    try { const t = localStorage.getItem('inimu-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+    try { if (sessionStorage.getItem('inimu-session') || localStorage.getItem('inimu-session')) document.documentElement.classList.add('signed-in'); } catch (e) {}
+  </script>
+</head>
+<body>
+
+<!-- Logo sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 100 100">
+    <rect width="100" height="100" rx="23" style="fill:var(--mark-bg,#6346CC)" />
+    <rect x="41.8" y="23.5" width="16.4" height="13.6" rx="6" style="fill:var(--mark-fg,#fff)" />
+    <rect x="42.7" y="40.6" width="14.6" height="35.9" style="fill:var(--mark-fg,#fff)" />
+  </symbol>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="lockup" href="#top" aria-label="inimu — home">
+      <svg class="lockup-mark"><use href="#mark" /></svg>
+      <span class="wordmark">inimu</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#products">Products</a>
+      <a href="status.html">Status</a>
+      <a href="#faq">FAQ</a>
+      <a href="#" class="discord">Discord</a>
+    </nav>
+    <div class="nav-r">
+      <a class="nav-login hide-sm" href="login.html">Log in</a>
+      <a class="nav-register hide-sm" href="register.html">Register</a>
+      <div class="theme" role="radiogroup" aria-label="Theme">
+        <button data-theme-set="light" aria-label="Light theme" aria-pressed="false">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="3.5" /><path d="M10 1.8v2M10 16.2v2M1.8 10h2M16.2 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4" /></svg>
+        </button>
+        <button data-theme-set="dark" aria-label="Dark theme" aria-pressed="true">
+          <svg viewBox="0 0 20 20"><path d="M16.5 12.3A7 7 0 0 1 7.7 3.5a7 7 0 1 0 8.8 8.8z" /></svg>
+        </button>
+      </div>
+      <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-sheet" id="sheet">
+    <a href="#products">Products</a>
+    <a href="status.html">Status</a>
+    <a href="#faq">FAQ</a>
+    <a href="#">Discord</a>
+    <div class="sheet-ctas">
+      <a class="btn btn-ghost" href="login.html">Log in</a>
+      <a class="btn btn-primary" href="register.html">Register</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <h1 class="hero-title reveal">Your edge.<br /><span class="dim">Nobody sees it.</span></h1>
+  </div>
+</section>
+
+<!-- ============ REQUIREMENTS ============ -->
+<section class="sec" id="requirements">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Requirements</span>
+      <h2 class="sec-title">Ready for your PC?</h2>
+      <p class="sec-sub">What each title needs on your machine. Not sure? Ask us on Discord before you buy.</p>
+    </div>
+
+    <div class="reqs">
+      <article class="req reveal">
+        <span class="req-cat">Tactical FPS</span>
+        <h3>Counter-Strike 2</h3>
+        <ul class="checks"><li>Windows 10 / 11 (64-bit)</li><li>Intel and AMD processors</li><li>Secure Boot + TPM — on or off, either works</li><li>Stream-proof overlay</li></ul>
+      </article>
+      <article class="req reveal">
+        <span class="req-cat">Survival</span>
+        <h3>Rust</h3>
+        <ul class="checks"><li>Windows 10 / 11 (64-bit)</li><li>Intel and AMD processors</li><li>Secure Boot + TPM — on or off, either works</li><li>Borderless windowed mode</li></ul>
+      </article>
+      <article class="req reveal">
+        <span class="req-cat">Battle royale</span>
+        <h3>Apex Legends</h3>
+        <ul class="checks"><li>Windows 10 / 11 (Pro only)</li><li>Secure Boot + TPM supported</li><li>Controller supported</li><li>Stream-proof overlay</li></ul>
+      </article>
+      <article class="req reveal">
+        <span class="req-cat">Extraction shooter</span>
+        <h3>Escape from Tarkov</h3>
+        <ul class="checks"><li>Windows 10 / 11 (64-bit)</li><li>Intel and AMD processors</li><li>Borderless windowed mode</li><li>Stream-proof overlay</li></ul>
+      </article>
+      <article class="req reveal">
+        <span class="req-cat">Battle royale</span>
+        <h3>PUBG: Battlegrounds</h3>
+        <ul class="checks"><li>Windows 10 / 11 (64-bit)</li><li>Secure Boot + TPM — on or off, either works</li><li>Controller supported</li></ul>
+      </article>
+      <article class="req reveal">
+        <span class="req-cat">Tactical FPS</span>
+        <h3>Rainbow Six Siege</h3>
+        <ul class="checks"><li>Windows 10 / 11 (Pro only)</li><li>Secure Boot + TPM supported</li><li>Stream-proof overlay</li></ul>
+      </article>
+    </div>
+    <p class="fine reveal">Not supported: Windows 7 / 8, ARM devices and virtual machines.</p>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="sec" id="products">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Products</span>
+        <h2 class="sec-title">Supported games.</h2>
+      </div>
+      <div class="period" role="radiogroup" aria-label="Billing period" data-period>
+        <button role="radio" aria-checked="true" data-p="month">Monthly</button>
+        <button role="radio" aria-checked="false" data-p="week">Weekly</button>
+        <span class="period-thumb" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="products">
+      <article class="prod reveal" data-month="40" data-week="15">
+        <div class="prod-top"><span class="prod-code">CS2</span><span class="st st-ok">Undetected</span></div>
+        <h3>Counter-Strike 2</h3>
+        <p>Aim assist, trigger and recoil control with per-weapon profiles.</p>
+        <div class="prod-price">
+          <span class="price"><strong data-price>€40</strong><span class="per" data-per>/ month</span></span>
+          <a class="prod-view" href="product.html?p=cs2" aria-label="View Counter-Strike 2"><span>View</span><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" /></svg></a>
+        </div>
+      </article>
+
+      <article class="prod reveal" data-month="40" data-week="15">
+        <div class="prod-top"><span class="prod-code">RUST</span><span class="st st-ok">Undetected</span></div>
+        <h3>Rust</h3>
+        <p>Player, loot and raid ESP with a clean radar for wipe day.</p>
+        <div class="prod-price">
+          <span class="price"><strong data-price>€40</strong><span class="per" data-per>/ month</span></span>
+          <a class="prod-view" href="product.html?p=rust" aria-label="View Rust"><span>View</span><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" /></svg></a>
+        </div>
+      </article>
+
+      <article class="prod reveal" data-month="35" data-week="12">
+        <div class="prod-top"><span class="prod-code">APEX</span><span class="st st-warn">Updating</span></div>
+        <h3>Apex Legends</h3>
+        <p>Smooth aim and squad visuals. Paused while the new season ships.</p>
+        <div class="prod-price">
+          <span class="price"><strong data-price>€35</strong><span class="per" data-per>/ month</span></span>
+          <a class="prod-view" href="product.html?p=apex" aria-label="View Apex Legends"><span>View</span><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" /></svg></a>
+        </div>
+      </article>
+
+      <article class="prod reveal" data-month="45" data-week="17">
+        <div class="prod-top"><span class="prod-code">EFT</span><span class="st st-ok">Undetected</span></div>
+        <h3>Escape from Tarkov</h3>
+        <p>Loot filters by value, AI and player ESP, extract timers.</p>
+        <div class="prod-price">
+          <span class="price"><strong data-price>€45</strong><span class="per" data-per>/ month</span></span>
+          <a class="prod-view" href="product.html?p=eft" aria-label="View Escape from Tarkov"><span>View</span><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" /></svg></a>
+        </div>
+      </article>
+
+      <article class="prod reveal" data-month="35" data-week="12">
+        <div class="prod-top"><span class="prod-code">PUBG</span><span class="st st-ok">Undetected</span></div>
+        <h3>PUBG: Battlegrounds</h3>
+        <p>Long-range visuals, vehicle ESP and recoil control.</p>
+        <div class="prod-price">
+          <span class="price"><strong data-price>€35</strong><span class="per" data-per>/ month</span></span>
+          <a class="prod-view" href="product.html?p=pubg" aria-label="View PUBG: Battlegrounds"><span>View</span><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" /></svg></a>
+        </div>
+      </article>
+
+      <article class="prod reveal" data-month="30" data-week="10">
+        <div class="prod-top"><span class="prod-code">R6</span><span class="st st-test">Testing</span></div>
+        <h3>Rainbow Six Siege</h3>
+        <p>Operator ESP and gadget visuals. In internal testing.</p>
+        <div class="prod-price">
+          <span class="price"><strong data-price>€30</strong><span class="per" data-per>/ month</span></span>
+          <a class="prod-view" href="product.html?p=r6" aria-label="View Rainbow Six Siege"><span>View</span><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" /></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="wrap faq-grid">
+    <div class="sec-head sec-head-side reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="sec-title">Questions.</h2>
+      <p class="sec-sub">Anything else, ask us on Discord. A human answers, usually within minutes.</p>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>Which games are supported?</summary>
+        <p>Counter-Strike 2, Rust, Apex Legends, Escape from Tarkov, PUBG: Battlegrounds and Rainbow Six Siege. Check the status board for the current state of each.</p>
+      </details>
+      <details>
+        <summary>What happens when a game updates?</summary>
+        <p>The title switches to “Updating” and the loader won’t start it until a verified build ships. Any time you lose is added back to your key.</p>
+      </details>
+      <details>
+        <summary>Does it work with streaming and recording?</summary>
+        <p>Yes. The overlay is only drawn for your display, so captures from OBS, Discord or in-game replays show the game as normal.</p>
+      </details>
+      <details>
+        <summary>How fast is delivery?</summary>
+        <p>Instant. Your key appears in your dashboard and inbox as soon as the payment clears.</p>
+      </details>
+      <details>
+        <summary>Can I move my key to a new PC?</summary>
+        <p>Keys are bound to one machine. You can reset the binding yourself from the dashboard once every seven days.</p>
+      </details>
+      <details>
+        <summary>Is there a refund policy?</summary>
+        <p>All sales are final, since access is delivered instantly. If we fail to deliver what you bought, open a ticket on Discord and we'll make it right. Full details are in the <a class="inline" href="terms.html#payments">terms</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="wrap cta-in reveal">
+    <svg class="cta-mark" aria-hidden="true"><use href="#mark" /></svg>
+    <h2 class="cta-title">Ready when you are.</h2>
+    <p class="sec-sub">Create an account, pick a title, press Insert.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="register.html">Register</a>
+      <a class="btn btn-ghost" href="#">Join the Discord</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="lockup" href="#top" aria-label="inimu — home">
+        <svg class="lockup-mark"><use href="#mark" /></svg>
+        <span class="wordmark">inimu</span>
+      </a>
+      <p class="dim">Precision software for competitive games.</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h4>Product</h4>
+        <a href="#products">Products</a><a href="status.html">Status</a><a href="#">Changelog</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#">Discord</a><a href="#faq">FAQ</a><a href="#">Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="terms.html#payments">Refunds</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span class="mono-xs">© 2026 inimu</span>
+      <span class="mono-xs">Not affiliated with any game publisher.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="js/account.js"></script>
+</body>
+</html>
