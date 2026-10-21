@@ -18,18 +18,23 @@
     burger.setAttribute('aria-expanded', 'false');
   }));
 
-  // Header spotlight follows the cursor (pointer devices, motion allowed)
-  if (matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
-    let frame = 0;
-    nav.addEventListener('pointermove', e => {
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        const r = nav.getBoundingClientRect();
-        nav.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        nav.style.setProperty('--my', `${e.clientY - r.top}px`);
-        frame = 0;
-      });
-    });
+  // Header links: one highlight slides to whichever link is hovered
+  const links = $('.nav-links');
+  if (links && matchMedia('(hover: hover)').matches) {
+    const pill = document.createElement('span');
+    pill.className = 'nav-pill';
+    pill.setAttribute('aria-hidden', 'true');
+    links.prepend(pill);
+    $$('a', links).forEach(a => a.addEventListener('pointerenter', () => {
+      // first hover places the pill without sliding in from the last spot
+      const fresh = !links.classList.contains('has-pill');
+      if (fresh) pill.style.transitionProperty = 'opacity';
+      links.style.setProperty('--pill-x', `${a.offsetLeft}px`);
+      links.style.setProperty('--pill-w', `${a.offsetWidth}px`);
+      if (fresh) { void pill.offsetWidth; pill.style.transitionProperty = ''; }
+      links.classList.add('has-pill');
+    }));
+    links.addEventListener('pointerleave', () => links.classList.remove('has-pill'));
   }
 
   // Theme — transitions suppressed during the swap so colors don't smear
@@ -49,15 +54,6 @@
   };
   setTheme(root.dataset.theme || 'dark', false);
   themeBtns.forEach(b => b.addEventListener('click', () => setTheme(b.dataset.themeSet, true)));
-
-  // Product cards: glow follows the cursor (pointer devices, motion allowed)
-  if (matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
-    $$('.prod').forEach(card => card.addEventListener('pointermove', e => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--px', `${e.clientX - r.left}px`);
-      card.style.setProperty('--py', `${e.clientY - r.top}px`);
-    }));
-  }
 
   // Billing period toggle: one price per card, monthly or weekly
   const period = $('[data-period]');
@@ -102,5 +98,20 @@
     if (el.closest('.hero')) el.style.transitionDelay = `${i * 100}ms`;
     else if (el.classList.contains('prod')) el.style.transitionDelay = `${(prods.indexOf(el) % 3) * 100}ms`;
     io.observe(el);
+  });
+
+  // Status page: draw 30 daily uptime bars, marking the degraded days
+  $$('.bars').forEach(track => {
+    const days = 30;
+    const bad = Math.min(days, parseInt(track.dataset.bad) || 0);
+    // spread the degraded days out rather than bunching them at the end
+    const step = bad ? days / bad : 0;
+    const flagged = new Set();
+    for (let k = 0; k < bad; k++) flagged.add(Math.round(k * step + step / 2));
+    for (let d = 0; d < days; d++) {
+      const bar = document.createElement('i');
+      if (flagged.has(d) && track.dataset.tone !== 'test') bar.className = 'bad';
+      track.append(bar);
+    }
   });
 })();

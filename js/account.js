@@ -15,8 +15,9 @@
   // real security — TODO: replace with the backend before going live.
   // Passwords are stored as SHA-256 hashes.
   const DEMO_USERS = [
+    // demo login — username: parra  /  password: inimu2026
     { username: 'parra', email: 'parra@inimu.test', since: 'Jul 2026',
-      hash: '6cf0cc816ee9757de940a2f8ffa2a278528c2208c01a167e9745ee70208940a6' },
+      hash: 'bcc9edd5d60d62e040064e40ecb4bb42861e7104fbc0eb78e46d9169691491c9' },
   ];
   const USERS_KEY = 'inimu-users';
   const SESSION_KEY = 'inimu-session';
