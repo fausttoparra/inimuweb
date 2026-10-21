@@ -83,7 +83,7 @@
     return;
   }
 
-  document.title = `${p.name} — inimu`;
+  document.title = `${p.name} · inimu`;
   $('[data-pd-crumb]').textContent = p.name;
   $('[data-pd-cat]').textContent = p.category;
   $('[data-pd-name]').textContent = p.name;
