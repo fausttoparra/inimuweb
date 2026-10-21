@@ -37,6 +37,23 @@
     links.addEventListener('pointerleave', () => links.classList.remove('has-pill'));
   }
 
+  // Header: a soft glow follows the cursor (pointer devices, motion allowed)
+  if (matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+    let frame = 0;
+    // the desktop layout is scaled with CSS zoom; undo it for the pointer math
+    const zoom = () => parseFloat(getComputedStyle(document.documentElement).zoom) || 1;
+    nav.addEventListener('pointermove', e => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        const r = nav.getBoundingClientRect();
+        const z = zoom();
+        nav.style.setProperty('--mx', `${(e.clientX - r.left) / z}px`);
+        nav.style.setProperty('--my', `${(e.clientY - r.top) / z}px`);
+        frame = 0;
+      });
+    });
+  }
+
   // Theme — transitions suppressed during the swap so colors don't smear
   const root = document.documentElement;
   const themeBtns = $$('[data-theme-set]');
@@ -82,7 +99,19 @@
     });
   }
 
-  // Reveal on scroll — hero chunks and product cards stagger 100ms
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Reveal on scroll — sections fade in; grouped lists stagger their items.
+  // The wrapping block drops its own reveal so only the items animate (no double fade).
+  [['.titles-row', 'li'], ['.reqlist', 'li'], ['.reqnotes ul', 'li'], ['.sboard', '.srow'], ['.faq', 'details']]
+    .forEach(([sel, child]) => {
+      const group = $(sel);
+      if (!group) return;
+      const wrap = group.closest('.reveal');
+      if (wrap) wrap.classList.remove('reveal');
+      $$(child, group).forEach((el, i) => { el.classList.add('reveal'); el.dataset.rvStep = Math.min(i, 7) * 70; });
+    });
+
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
@@ -90,28 +119,31 @@
       el.classList.add('in');
       io.unobserve(el);
       // drop the stagger delay once revealed so hover transitions respond instantly
-      setTimeout(() => { el.style.transitionDelay = ''; }, 300 + (parseInt(el.style.transitionDelay) || 0));
+      setTimeout(() => { el.style.transitionDelay = ''; }, 320 + (parseInt(el.style.transitionDelay) || 0));
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
   const prods = $$('.prod');
   $$('.reveal').forEach((el, i) => {
-    if (el.closest('.hero')) el.style.transitionDelay = `${i * 100}ms`;
-    else if (el.classList.contains('prod')) el.style.transitionDelay = `${(prods.indexOf(el) % 3) * 100}ms`;
+    let delay = 0;
+    if (el.dataset.rvStep != null) delay = +el.dataset.rvStep;
+    else if (el.closest('.hero')) delay = i * 100;
+    else if (el.classList.contains('prod')) delay = (prods.indexOf(el) % 3) * 100;
+    if (delay) el.style.transitionDelay = `${delay}ms`;
     io.observe(el);
   });
 
-  // Status page: draw 30 daily uptime bars, marking the degraded days
-  $$('.bars').forEach(track => {
-    const days = 30;
-    const bad = Math.min(days, parseInt(track.dataset.bad) || 0);
-    // spread the degraded days out rather than bunching them at the end
-    const step = bad ? days / bad : 0;
-    const flagged = new Set();
-    for (let k = 0; k < bad; k++) flagged.add(Math.round(k * step + step / 2));
-    for (let d = 0; d < days; d++) {
-      const bar = document.createElement('i');
-      if (flagged.has(d) && track.dataset.tone !== 'test') bar.className = 'bad';
-      track.append(bar);
-    }
-  });
+  // Hero product shot: gentle parallax drift on scroll (pointer devices, motion allowed)
+  const shot = $('.shot-wrap');
+  if (shot && !reduce && matchMedia('(min-width: 721px)').matches) {
+    let rafS = 0;
+    const onParallax = () => {
+      if (rafS) return;
+      rafS = requestAnimationFrame(() => {
+        shot.style.setProperty('--par', `${Math.min(window.scrollY, 700) * 0.055}px`);
+        rafS = 0;
+      });
+    };
+    onParallax();
+    window.addEventListener('scroll', onParallax, { passive: true });
+  }
 })();

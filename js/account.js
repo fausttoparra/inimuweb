@@ -15,9 +15,9 @@
   // real security — TODO: replace with the backend before going live.
   // Passwords are stored as SHA-256 hashes.
   const DEMO_USERS = [
-    // demo login — username: parra  /  password: inimu2026
+    // demo login — username: parra  /  password: 28rc1KOcRz11
     { username: 'parra', email: 'parra@inimu.test', since: 'Jul 2026',
-      hash: 'bcc9edd5d60d62e040064e40ecb4bb42861e7104fbc0eb78e46d9169691491c9' },
+      hash: '6cf0cc816ee9757de940a2f8ffa2a278528c2208c01a167e9745ee70208940a6' },
   ];
   const USERS_KEY = 'inimu-users';
   const SESSION_KEY = 'inimu-session';
@@ -244,7 +244,7 @@
   }
 
   // profile header
-  const COVERS = ['violet', 'deep', 'ink'];
+  const COVERS = ['graphite', 'gunmetal', 'void'];
   const renderProfile = () => {
     const p = getProfile(me.username);
     const id = identity();
@@ -259,12 +259,12 @@
     role.classList.toggle('is-premium', n > 0);
     $('[data-stat-titles]').textContent = n;
     $('[data-user-since]').textContent = me.since;
-    $('[data-cover]').dataset.cover = p.cover || 'violet';
+    $('[data-cover]').dataset.cover = p.cover || 'graphite';
     $('[data-discord-tool]').textContent = p.discord ? 'Discord linked' : 'Connect Discord';
   };
   $('[data-cover-next]').addEventListener('click', () => {
     const p = getProfile(me.username);
-    p.cover = COVERS[(COVERS.indexOf(p.cover || 'violet') + 1) % COVERS.length];
+    p.cover = COVERS[(COVERS.indexOf(p.cover || 'graphite') + 1) % COVERS.length];
     saveProfile(me.username, p);
     renderProfile();
   });
