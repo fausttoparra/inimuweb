@@ -47,6 +47,7 @@
   --ok: #4CC38A;
   --warn: #F2B84B;
   --test: var(--steel);
+  --mw1: #FFFFFF; --mw2: #D5D9DE; --mw3: #8E949C; /* wordmark metal, dark */
 }
 
 [data-theme="light"] {
@@ -75,6 +76,7 @@
   --ok: #18915A;
   --warn: #B7791F;
   --test: #6B717A;
+  --mw1: #1A1C1F; --mw2: #30343A; --mw3: #5B616A; /* wordmark metal, light */
 }
 
 :root {
@@ -141,6 +143,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .lockup-mark { width: 13px; height: 26px; }
 .wordmark { font: 800 21px/1 var(--sans); letter-spacing: -.06em; color: var(--heading); background: var(--metal-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; padding-right: .04em; }
 
+/* Combined logo: the metal "i" mark and "nimu" baked into one SVG element. */
+.logo { height: 26px; width: auto; display: block; overflow: visible; }
+.logo-word { font-family: var(--sans); font-weight: 800; font-size: 46px; letter-spacing: -2.5px; fill: url(#g-word); }
+
 /* ===== Header ===== */
 .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; }
 /* the bar is drawn on a layer behind the content, so on scroll it can
@@ -166,17 +172,20 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   opacity: 0; transition: opacity 300ms var(--ease-out);
 }
 .nav.is-scrolled::after { inset: 10px max(12px, calc(50% - var(--maxw) / 2)); border-radius: 16px; }
-@media (hover: hover) { .nav:hover::after { opacity: 1; } }
+@media (hover: hover) { .nav:has(.nav-in:hover)::after { opacity: 1; } }
 .nav-in { position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 72px; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
-.nav.is-scrolled .nav-in { height: 62px; }
 
-.nav .lockup { justify-self: start; gap: 12px; position: relative; }
-.nav .lockup-mark { width: 15px; height: 30px; transition: translate 300ms var(--ease-out), scale 300ms var(--ease-out), rotate 300ms var(--ease-out); }
-.nav .wordmark { font-size: 23px; transition: translate 300ms var(--ease-out); }
-/* header logo: lifts, scales and tilts when you hover it */
+.nav .lockup { justify-self: start; position: relative; }
+.nav .logo { height: 29px; transform-origin: left center; transition: translate 320ms var(--ease-out), scale 320ms var(--ease-out); }
+/* the mark pivots at its base, the word slides from its left edge */
+.nav .logo .logo-mark { transform-box: fill-box; transform-origin: 50% 100%; transition: transform 340ms var(--ease-out); }
+.nav .logo .logo-word { transform-box: fill-box; transform-origin: 0% 50%; transition: transform 340ms var(--ease-out) 50ms; }
+/* header logo animates only while the cursor is over the navbar bar:
+   the whole lockup lifts, the "i" tilts + pops, and the word nudges after it */
 @media (hover: hover) {
-  .nav .lockup:hover .lockup-mark { translate: 0 -2px; scale: 1.14; rotate: -8deg; }
-  .nav .lockup:hover .wordmark { translate: 2px 0; }
+  .nav-in:hover .logo { translate: 0 -2px; scale: 1.04; }
+  .nav-in:hover .logo .logo-mark { transform: rotate(-9deg) scale(1.12); }
+  .nav-in:hover .logo .logo-word { transform: translateX(3px); }
 }
 
 .nav-links { position: relative; display: flex; gap: 2px; }
